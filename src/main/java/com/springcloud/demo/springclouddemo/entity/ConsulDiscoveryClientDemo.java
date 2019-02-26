@@ -33,17 +33,17 @@ public class ConsulDiscoveryClientDemo extends ConsulDiscoveryClient {
         instances.add(new ServiceInstance() {
             @Override
             public String getServiceId() {
-                return null;
+                return "service-producer";
             }
 
             @Override
             public String getHost() {
-                return null;
+                return "localhost";
             }
 
             @Override
             public int getPort() {
-                return 0;
+                return 8501;
             }
 
             @Override

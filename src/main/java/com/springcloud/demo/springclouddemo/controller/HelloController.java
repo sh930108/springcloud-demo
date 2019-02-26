@@ -47,7 +47,7 @@ public class HelloController {
 
     @RequestMapping("/helloDiscoveryDemo")
     public String helloDiscoveryDemo() {
-        List<ServiceInstance> instances = consulDiscoveryClient.getInstances("service-producer");
+        List<ServiceInstance> instances = consulDiscoveryClient.getInstances("hello-springCloud");
         System.out.println("===================");
         System.out.println(new Gson().toJson(instances));
         System.out.println("==============");

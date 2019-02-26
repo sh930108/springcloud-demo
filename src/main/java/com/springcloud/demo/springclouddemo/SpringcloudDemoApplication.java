@@ -2,13 +2,16 @@ package com.springcloud.demo.springclouddemo;
 
 import com.ecwid.consul.v1.ConsulClient;
 import com.springcloud.demo.springclouddemo.entity.ConsulDiscoveryClientDemo;
+import com.springcloud.demo.springclouddemo.entity.MyRibbonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryClient;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
+import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
@@ -43,6 +46,11 @@ public class SpringcloudDemoApplication {
     @LoadBalanced
     RestTemplate restTemplate() {
         return new RestTemplate();
+    }
+
+    @Bean
+    public LoadBalancerClient loadBalancerClient(SpringClientFactory springClientFactory) {
+        return new MyRibbonClient(springClientFactory);
     }
 
 }
