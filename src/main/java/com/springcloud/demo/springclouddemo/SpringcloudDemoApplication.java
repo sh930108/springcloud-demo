@@ -1,16 +1,22 @@
 package com.springcloud.demo.springclouddemo;
 
 import com.ecwid.consul.v1.ConsulClient;
+import com.netflix.client.config.IClientConfig;
+import com.netflix.loadbalancer.*;
 import com.springcloud.demo.springclouddemo.entity.ConsulDiscoveryClientDemo;
 import com.springcloud.demo.springclouddemo.entity.MyRibbonClient;
+import com.springcloud.demo.springclouddemo.entity.SelfZoneAwareLoadBalancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryClient;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
+import org.springframework.cloud.netflix.ribbon.PropertiesFactory;
+import org.springframework.cloud.netflix.ribbon.RibbonClientName;
 import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
@@ -52,5 +58,7 @@ public class SpringcloudDemoApplication {
     public LoadBalancerClient loadBalancerClient(SpringClientFactory springClientFactory) {
         return new MyRibbonClient(springClientFactory);
     }
+
+
 
 }
