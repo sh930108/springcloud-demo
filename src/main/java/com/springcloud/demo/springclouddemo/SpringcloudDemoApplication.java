@@ -6,6 +6,7 @@ import com.netflix.loadbalancer.*;
 import com.springcloud.demo.springclouddemo.entity.ConsulDiscoveryClientDemo;
 import com.springcloud.demo.springclouddemo.entity.MyRibbonClient;
 import com.springcloud.demo.springclouddemo.entity.SelfZoneAwareLoadBalancer;
+import config.MyRibbonFeignConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,6 +18,7 @@ import org.springframework.cloud.consul.discovery.ConsulDiscoveryClient;
 import org.springframework.cloud.consul.discovery.ConsulDiscoveryProperties;
 import org.springframework.cloud.netflix.ribbon.PropertiesFactory;
 import org.springframework.cloud.netflix.ribbon.RibbonClientName;
+import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.netflix.ribbon.SpringClientFactory;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +29,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
+@RibbonClients( defaultConfiguration  = MyRibbonFeignConfig.class)
 public class SpringcloudDemoApplication {
 
     @Autowired

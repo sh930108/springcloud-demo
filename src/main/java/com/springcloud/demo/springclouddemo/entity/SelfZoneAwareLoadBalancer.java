@@ -11,7 +11,6 @@ import com.netflix.loadbalancer.*;
  **/
 public class SelfZoneAwareLoadBalancer<T extends Server> extends ZoneAwareLoadBalancer<T> {
 
-
     public SelfZoneAwareLoadBalancer(IClientConfig clientConfig, IRule rule, IPing ping, ServerList<T> serverList, ServerListFilter<T> filter, ServerListUpdater serverListUpdater) {
         super(clientConfig, rule, ping, serverList, filter, serverListUpdater);
     }
